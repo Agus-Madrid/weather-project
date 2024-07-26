@@ -4,9 +4,8 @@
 
 body {
   font-size: 20px;
-  background: rgb(5,12,24);
-  background: linear-gradient(0deg, rgba(5,12,24,1) 0%, rgba(49,54,63,1) 35%, rgba(118,171,174,1) 100%);
   margin: 0;
+  background-color: #f0f0f0;;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
     sans-serif;
   -webkit-font-smoothing: antialiased;
