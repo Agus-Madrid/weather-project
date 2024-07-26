@@ -3,7 +3,7 @@ import React from "react";
 export const Header = () => {
 
     return (
-        <header className="header w-full bg-slate-400">
+        <header className="header w-full bg-[#222831] p-4">
             <div className="flex justify-center">
                 <h1 className="text-white text-2xl font-bold">Weather App</h1>
             </div>

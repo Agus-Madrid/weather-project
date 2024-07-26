@@ -3,7 +3,7 @@ export async function getWeather(lat, lon, apiKey) {
 
     try {
         const response = await fetch(apiUrl);
-        const data = await response.json();
+        const data = await response.json().then();
         return data;
     } catch (error) {
         console.error('Error fetching weather data:', error);
