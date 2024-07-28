@@ -3,13 +3,17 @@ import './App.css';
 import { Header } from './components/Header';
 import { Home } from './pages/Home';
 import { WeatherProvider } from './providers/WeatherProvider';
+import { LocationProvider } from './providers/LocationProvider';
+
 function App() {
   return (
     <>
-     <WeatherProvider>
-      <Header />
-      <Home/>
-     </WeatherProvider>
+    <LocationProvider>
+      <WeatherProvider>
+          <Header />
+          <Home/>
+      </WeatherProvider>
+     </LocationProvider>
     </>
   );
 }
