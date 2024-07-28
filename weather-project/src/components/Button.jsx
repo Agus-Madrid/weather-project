@@ -6,7 +6,7 @@ export const Button = ({ text, onClick, typeOfButton }) => {
         switch(typeOfButton) {
             case 'info':
                 return (
-                    <button onClick={onClick} className="w-1/4 bg-[#2561bd] text-white border-4 border-[#2561bd] border-opacity-100 rounded-xl p-2 hover:bg-[transparent] font-bold transition-all">
+                    <button onClick={onClick} className="w-1/4 bg-[#2561bd] text-white border-4 border-[#2561bd] border-opacity-100 rounded-full p-2 hover:bg-[transparent]transition-all">
                         {text}
                     </button>
                 );
@@ -14,6 +14,13 @@ export const Button = ({ text, onClick, typeOfButton }) => {
             case 'secondary':
                 return (
                     <button onClick={onClick} className="btn bg-[#31363F] text-white rounded-lg p-2 hover:bg-[#222831]">
+                        {text}
+                    </button>
+                );
+                break;
+            case 'us':
+                return (
+                    <button onClick={onClick} className="w-1/4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                         {text}
                     </button>
                 );
