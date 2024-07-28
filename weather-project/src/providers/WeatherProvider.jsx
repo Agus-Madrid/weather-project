@@ -1,5 +1,6 @@
 // WeatherProvider.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { usePosition } from './LocationProvider';
 
 // Crear el contexto
 export const WeatherContext = createContext();
@@ -7,13 +8,13 @@ export const WeatherContext = createContext();
 // Crear el proveedor de datos
 export const WeatherProvider = ({ children }) => {
     const [weather, setWeather] = useState(null);
-    const [position, setPosition] = useState(null);
     const [country, setCountry] = useState('');
     const [windStatus, setWindStatus] = useState({
         status: '',
         color: '',
         description: ''
     });
+    const { position } = usePosition() || {};
 
     const getWeather = async (lat, lon, apiKey) => {
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
@@ -74,23 +75,8 @@ export const WeatherProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (pos) => {
-                    setPosition({
-                        latitude: pos.coords.latitude,
-                        longitude: pos.coords.longitude
-                    });
-                },
-                (error) => {
-                    console.error('Error getting geolocation:', error);
-                }
-            );
-        }
-    }, []);
-
-    useEffect(() => {
         const fetchWeather = async () =>{
+
             if(!position) return;
             const data = await getWeather(position.latitude,position.longitude, 'd74433f649c3dcaf1fad920aa072f92d');   
             setWeather(data);

@@ -3,10 +3,12 @@ import React from 'react';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
 import { useWeather } from '../providers/WeatherProvider';
+import { usePosition } from '../providers/LocationProvider';
 import sunriseIcon from '../assets/icons/sunrise.png';
 import sunsetIcon from '../assets/icons/sunset-.png';
 
 export const Home = () => {
+    const {position} = usePosition();
     const { weather, country, windStatus } = useWeather();
 
     return (
