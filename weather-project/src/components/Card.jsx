@@ -1,9 +1,10 @@
 import React from 'react';
+import sunriseIcon from '../assets/icons/sunrise.png';
+// import sunsetIcon from '../assets/icons/sunset.png';
 
 export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
 
-    //React necesita expresiones para devolver abajo, no statements
-    const renderCardContent = () => { 
+    const renderCardContent = () => {
         switch(typeOfCard) {
             case 'main_card':
                 return (

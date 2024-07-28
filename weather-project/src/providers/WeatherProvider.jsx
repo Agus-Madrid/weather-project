@@ -21,7 +21,9 @@ export const WeatherProvider = ({ children }) => {
         try {
             const response = await fetch(apiUrl);
             const data = await response.json();
+            console.log('Weather data:', data);
             return data;
+            
         } catch (error) {
             console.error('Error fetching weather data:', error);
             return null;
