@@ -1,9 +1,10 @@
 import React from 'react';
+// import sunriseIcon from '../assets/icons/sunrise.png';
+// import sunsetIcon from '../assets/icons/sunset.png';
 
 export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
 
-    //React necesita expresiones para devolver abajo, no statements
-    const renderCardContent = () => { 
+    const renderCardContent = () => {
         switch(typeOfCard) {
             case 'main_card':
                 return (
@@ -51,8 +52,8 @@ export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
                             {title}
                         </div>
                         <div className='card-content flex flex-col justify-center pl-4 rounded-b-lg'>  
-                            <h2>s</h2>
-                            <p>{temperature}</p>
+                            {/* <h2>s</h2> */}
+                            <p>{children}</p>
                         </div>
                     </div>  
                 );
