@@ -115,36 +115,22 @@ export const Home = () => {
                     />
                 </section>
                 <aside className='w-1/3 flex justify-start gap-4 p-4 flex-col items-center'>
-                    {news.slice(0, 2).map((article, index) => (
+                    {news.filter(article => article.urlToImage).slice(0, 3).map((article, index) => (
                         <Card
                             key={index}
-                            title={article.title}
+                            title={<a href={article.url} target="_blank" rel="noopener noreferrer">{article.title}</a>}
                             weather={weather}
                             temperature={'temp'}
                             typeOfCard={'aside_card'}
                             children={
-                                <div className='flex flex-col gap-2'>
-                                    <p>{article.description}</p>
-                                    <a href={article.url} target="_blank" rel="noopener noreferrer" className='text-blue-500'>Read more</a>
+                                <div className='card-content flex flex-col justify-center pl-4 rounded-b-lg'>
+                                    {article.urlToImage && (
+                                        <img src={article.urlToImage} alt={article.title} className='w-full h-48 object-cover rounded-t-lg' />
+                                    )}
                                 </div>
                             }
                         />
                     ))}
-                    {news.slice(2, 4).map((article, index) => (
-                        <Card
-                            key={index}
-                            title={article.title}
-                            weather={weather}
-                            temperature={'temp'}
-                            typeOfCard={'aside_card'}
-                            children={
-                                <div className='flex flex-col gap-2'>
-                                    <p>{article.description}</p>
-                                    <a href={article.url} target="_blank" rel="noopener noreferrer" className='text-blue-500'>Read more</a>
-                                </div>
-                            }
-                        />
-                    ))} 
                 </aside>
             </>
             }

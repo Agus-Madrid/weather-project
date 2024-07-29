@@ -41,8 +41,8 @@ export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
                             {title}
                         </div>
                         <div className='card-content flex flex-col justify-center pl-4 rounded-b-lg'>  
-                            <h2>s</h2>
-                            <p>{temperature}</p>
+                            {/* <h2>s</h2> */}
+                            <p>{children}</p>
                         </div>
                     </div>  
                 );
