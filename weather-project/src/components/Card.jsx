@@ -1,5 +1,5 @@
 import React from 'react';
-import sunriseIcon from '../assets/icons/sunrise.png';
+// import sunriseIcon from '../assets/icons/sunrise.png';
 // import sunsetIcon from '../assets/icons/sunset.png';
 
 export const Card = ({ title, weather, temperature, typeOfCard, children }) => {

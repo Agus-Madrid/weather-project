@@ -1,15 +1,17 @@
-// Home.jsx
+// src/pages/Home.jsx
 import React from 'react';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
 import { useWeather } from '../providers/WeatherProvider';
 import { usePosition } from '../providers/LocationProvider';
+import { useNews } from '../providers/NewsProvider';
 import sunriseIcon from '../assets/icons/sunrise.png';
 import sunsetIcon from '../assets/icons/sunset-.png';
 
 export const Home = () => {
-    const {position} = usePosition();
+    const { position } = usePosition();
     const { weather, country, windStatus } = useWeather();
+    const { news } = useNews();
 
     return (
         <main className='w-3/4 flex mt-4 h-auto m-auto'>
@@ -113,8 +115,36 @@ export const Home = () => {
                     />
                 </section>
                 <aside className='w-1/3 flex justify-start gap-4 p-4 flex-col items-center'>
-                    <Card title={'header'} weather={weather} temperature={'temp'} typeOfCard={'aside_card'}/>
-                    <Card title={'header'} weather={weather} temperature={'temp'} typeOfCard={'aside_card'}/>
+                    {news.slice(0, 2).map((article, index) => (
+                        <Card
+                            key={index}
+                            title={article.title}
+                            weather={weather}
+                            temperature={'temp'}
+                            typeOfCard={'aside_card'}
+                            children={
+                                <div className='flex flex-col gap-2'>
+                                    <p>{article.description}</p>
+                                    <a href={article.url} target="_blank" rel="noopener noreferrer" className='text-blue-500'>Read more</a>
+                                </div>
+                            }
+                        />
+                    ))}
+                    {news.slice(2, 4).map((article, index) => (
+                        <Card
+                            key={index}
+                            title={article.title}
+                            weather={weather}
+                            temperature={'temp'}
+                            typeOfCard={'aside_card'}
+                            children={
+                                <div className='flex flex-col gap-2'>
+                                    <p>{article.description}</p>
+                                    <a href={article.url} target="_blank" rel="noopener noreferrer" className='text-blue-500'>Read more</a>
+                                </div>
+                            }
+                        />
+                    ))} 
                 </aside>
             </>
             }
