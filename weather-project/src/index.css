@@ -5,7 +5,11 @@
 body {
   font-size: 20px;
   margin: 0;
-  background-color: #f0f0f0;;
+  background-color: #ffffff;
+  background-image: url('../public/descarga3.jpg');
+  background-size: 200%;
+  background-repeat: no-repeat;
+  background-position: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
     sans-serif;
   -webkit-font-smoothing: antialiased;

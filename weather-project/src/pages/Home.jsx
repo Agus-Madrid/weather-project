@@ -14,6 +14,13 @@ export const Home = () => {
     const { weather, country, windStatus } = useWeather();
     const { news } = useNews();
 
+    const ifLargerCut = (text, length) => {
+        if(text.length > length) {
+            return text.slice(0, length) + '...';
+        }
+        return text;
+    };
+
     return (
         <>
             <Banner />
@@ -122,14 +129,14 @@ export const Home = () => {
                     {news.filter(article => article.urlToImage).slice(0, 3).map((article, index) => (
                         <Card
                             key={index}
-                            title={<a href={article.url} target="_blank" rel="noopener noreferrer">{article.title}</a>}
+                            title={<a href={article.url} target="_blank" rel="noopener noreferrer">{ifLargerCut(article.title,47)}</a>}
                             weather={weather}
                             temperature={'temp'}
                             typeOfCard={'aside_card'}
                             children={
-                                <div className='card-content flex flex-col justify-center pl-4 rounded-b-lg'>
+                                <div className='card-content flex flex-col justify-center w-full h-full items-center'>
                                     {article.urlToImage && (
-                                        <img src={article.urlToImage} alt={article.title} className='w-full h-48 object-cover rounded-t-lg' />
+                                        <img src={article.urlToImage} alt={article.title} className='w-full h-full object-cover rounded-lg' />
                                     )}
                                 </div>
                             }

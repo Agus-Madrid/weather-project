@@ -47,13 +47,18 @@ export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
                 );
             case 'aside_card':
                 return (
-                    <div className="card card-actual-temp w-full bg-[#31363F] rounded-lg h-[20rem] text-white">
-                        <div className="flex justify-center bg-opacity-45 bg-slate-800 rounded-t-lg text-xl py-2">
-                            {title}
-                        </div>
-                        <div className='card-content flex flex-col justify-center pl-4 rounded-b-lg'>  
+                    <div className="card card-actual-temp relative w-full bg-[#14171d] rounded-lg h-[20rem] -z-20 text-white flex">
+                        <div className='card-content flex flex-col justify-centerrounded-b-lg items-center w-full h-full -z-10'>  
                             {/* <h2>s</h2> */}
-                            <p>{children}</p>
+                            {children}
+                        </div>
+                        <div className='absolute bottom-0 w-full h-[8rem] bg-[#000000c5] rounded-b-xl z-10 flex justify-center items-center'>
+                            <p className='z-30 text-center pl-4 pr-4 font-bold'>
+                                {title}
+                            </p>
+                        </div>
+                        <div className='inside-card absolute top-0 left-0 w-full h-full bg-black opacity-45 rounded-xl -z-10'>
+
                         </div>
                     </div>  
                 );
