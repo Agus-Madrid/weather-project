@@ -6,8 +6,8 @@ import { useWeather } from '../providers/WeatherProvider';
 import { usePosition } from '../providers/LocationProvider';
 import { Banner } from '../components/Banner';
 import { useNews } from '../providers/NewsProvider';
-import sunriseIcon from '../assets/icons/sunrise.png';
-import sunsetIcon from '../assets/icons/sunset-.png';
+import sunriseIcon from '../assets/icons/sunrise.svg';
+import sunsetIcon from '../assets/icons/sunset.svg';
 
 export const Home = () => {
     const { position } = usePosition();
