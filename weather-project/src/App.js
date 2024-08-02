@@ -19,9 +19,9 @@ function App() {
           <Router>
             <Header />
             <Routes>
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route path="/info" component={Info} />
+              <Route path="/" element={<Home/>} />
+              <Route path="/about" element={<About/>} />
+              <Route path="/info" element={<Info/>} />
             </Routes>
           </Router>
         </NewsProvider>
