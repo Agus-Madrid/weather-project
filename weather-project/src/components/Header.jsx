@@ -16,10 +16,10 @@ export const Header = () => {
                                 <Link to="/" className="text-white hover:text-gray-400">Home</Link>
                             </li>
                             <li>
-                                <Link to="/about" className="text-white hover:text-gray-400">Info</Link>
+                                <Link to="/About" className="text-white hover:text-gray-400">About</Link>
                             </li>
                             <li>
-                                <Link to="/contact" className="text-white hover:text-gray-400">Contact</Link>
+                                <Link to="/Contact" className="text-white hover:text-gray-400">Contact</Link>
                             </li>
                         </ul>
                     </nav>
