@@ -1,19 +1,37 @@
-import React from 'react';
-// import sunriseIcon from '../assets/icons/sunrise.png';
-// import sunsetIcon from '../assets/icons/sunset.png';
+import React, { useState, useEffect } from 'react';
 
 export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
+
+    const [mousex, setMouseX] = useState(0);
+    const [mousey, setMouseY] = useState(0);
+
+    useEffect(() => {
+        const handleMouseMovement = (e) => {
+            const windowWidth = window.innerWidth / 2;
+            const windowHeight = window.innerHeight / 2;
+
+            setMouseX(e.clientX / windowWidth);
+            setMouseY(e.clientY / windowHeight);
+        }
+
+        window.addEventListener('mousemove', handleMouseMovement);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMovement);
+          };
+    }, []);
+
 
     const renderCardContent = () => {
         switch(typeOfCard) {
             case 'main_card':
                 return (
-                    <div className='w-full relative'>
-                        <div className="  card card-actual-temp w-full bg-[#040D12] rounded-lg minh-[16rem] text-white p-4 pt-0 pb-6" style={{
+                    <div className='w-full relative overflow-hidden'>
+                        <div className="main-card  card card-actual-temp w-full bg-[#040D12] rounded-lg minh-[16rem] text-white p-4 pt-0 pb-6" 
+                            style={{
                                 boxShadow: 'rgba(38, 38, 41, 0.2) 0px 7px 19px 0px',
-                                backgroundImage: `url("https://i.pinimg.com/564x/07/6e/c1/076ec18cc65e86984bf136203991ffc0.jpg")`, 
-                                    backgroundPosition: 'center',
-                                    backgroundSize: 'cover'
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover',
                                 }}>
                             <div className="flex justify-center bg-black bg-opacity-20 rounded-t-lg text-xl py-4 text-white z-20">
                                 <h2 className='text-4xl z-20'>
@@ -40,14 +58,19 @@ export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
                             
                             {children}
                         </div>
-                        <div className='inside-card absolute top-0 left-0 w-full h-full bg-black opacity-45 rounded-xl'>
-
-                        </div>
+                        <div className='inside-card absolute top-0 left-0 w-full h-full bg-black opacity-45 rounded-xl'/>
+                        <div 
+                            className='inside-card absolute top-0 left-0 w-full h-full bg-center opacity-45 bg-cover rounded-xl'
+                            style={{
+                                backgroundImage: `url("https://i.pinimg.com/564x/07/6e/c1/076ec18cc65e86984bf136203991ffc0.jpg")`,
+                                transform: `translate(-${mousex}%, -${mousey}%)`
+                            }}
+                        />
                     </div>
                 );
             case 'aside_card':
                 return (
-                    <div className="card card-actual-temp relative w-full bg-[#14171d] rounded-lg h-[20rem] -z-20 text-white flex">
+                    <div className="card card-aside-temp relative w-full bg-[#14171d] rounded-lg h-[20rem] -z-20 text-white flex">
                         <div className='card-content flex flex-col justify-centerrounded-b-lg items-center w-full h-full -z-10'>  
                             {/* <h2>s</h2> */}
                             {children}

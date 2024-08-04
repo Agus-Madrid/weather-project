@@ -125,7 +125,7 @@ export const Home = () => {
                         }
                     />
                 </section>
-                <aside className='w-1/3 flex justify-start gap-4 p-4 flex-col items-center'>
+                <aside className='w-1/3 flex justify-start gap-4 p-4 pr-0 flex-col items-center'>
                     {news.filter(article => article.urlToImage).slice(0, 3).map((article, index) => (
                         <Card
                             key={index}
