@@ -43,7 +43,7 @@ export const Banner = ({ title }) => {
             <Button text={"Agustin"} typeOfButton={"us"} />
           </div>
 
-          <div className="w-1/8 flex gap-4 justify-center items-centerp-2">
+          <div className="w-1/8 flex gap-4 justify-center items-center p-2">
             <div className="bg-cyan-600 w-auto h-fit rounded">
               <ReactIcon width={"20px"} />
             </div>
