@@ -23,7 +23,7 @@ export const Home = () => {
 
   return (
     <>
-      <Banner />
+      <Banner title={'Weather - Web'}/>
       <main className="w-3/4 flex mt-4 h-auto m-auto relative">
         {!weather ? (
           <>
