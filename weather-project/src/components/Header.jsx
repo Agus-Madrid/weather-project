@@ -5,11 +5,11 @@ export const Header = () => {
 
     return (
         <header className="absolute header w-full top-0 z-40 flex justify-center">
-            <div className="bg-[#13161bec] p-6 w-3/4">
+            <div className="bg-[#13161b] p-6 w-3/4 flex justify-between">
                 <div className="flex justify-start">
                     <h1 className="text-white text-2xl ml-10">Weather</h1>
                 </div>
-                <div>
+                <div className="justify-self-center">
                     <nav>
                         <ul className="flex justify-center gap-4 ">
                             <li>
@@ -17,9 +17,6 @@ export const Header = () => {
                             </li>
                             <li>
                                 <Link to="/About" className="text-white hover:text-gray-400">About</Link>
-                            </li>
-                            <li>
-                                <Link to="/Contact" className="text-white hover:text-gray-400">Contact</Link>
                             </li>
                         </ul>
                     </nav>
