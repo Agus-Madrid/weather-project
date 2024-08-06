@@ -9,6 +9,8 @@ export const NewsProvider = ({ children }) => {
 
     const getNews = async () => {
         try {
+            if(!weather) return;
+            
             const fromDate = new Date();
             fromDate.setMonth(fromDate.getMonth() - 1);
             const formattedDate = fromDate.toISOString().split('T')[0];
