@@ -25,7 +25,7 @@ export const Home = () => {
     <>
       <Banner title={"Weather - Web"} />
       <main className="w-3/4 flex mt-4 h-auto m-auto relative">
-        {!weather && !news ? (
+        {!weather || !news ? (
           <>
             <div className="absolute top-[10%] left-2/4 p-2 rounded">
               <div role="status">
