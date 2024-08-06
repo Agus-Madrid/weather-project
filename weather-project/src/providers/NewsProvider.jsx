@@ -31,9 +31,11 @@ export const NewsProvider = ({ children }) => {
                 }
             }
 
-            const response = await fetch(`https://newsapi.org/v2/everything?q=${query} ${relevantKeywords}&from=${formattedDate}&sortBy=publishedAt&apiKey=525e07b580d3413c893538c90062da9b`);
+            const response = await fetch(`https://api.thenewsapi.com/v1/news/all?api_token=GqS4A51JZTQcnh7c9jGp6RJp84wIFXomNhGB7zpp&search=weather`);
+
+            console.log(response);
             const data = await response.json();
-            setNews(data.articles);
+            setNews(data.data);
         } catch (error) {
             console.error('Error fetching news:', error);
         }
@@ -41,6 +43,7 @@ export const NewsProvider = ({ children }) => {
 
     useEffect(() => {
         getNews();
+        
     }, [weather]);
 
     return (

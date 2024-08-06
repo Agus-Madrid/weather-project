@@ -199,7 +199,7 @@ export const Home = () => {
             </section>
             <aside className="w-1/3 flex justify-start gap-4 p-4 pr-0 flex-col items-center">
               {news
-                .filter((article) => article.urlToImage)
+                .filter((article) => article.image_url)
                 .slice(0, 3)
                 .map((article, index) => (
                   <Card
@@ -215,9 +215,9 @@ export const Home = () => {
                     typeOfCard={"aside_card"}
                     children={
                       <div className="card-content flex flex-col justify-center w-full h-full items-center">
-                        {article.urlToImage && (
+                        {article.image_url && (
                           <img
-                            src={article.urlToImage}
+                            src={article.image_url}
                             alt={article.title}
                             className="w-full h-full object-cover rounded-lg"
                           />
