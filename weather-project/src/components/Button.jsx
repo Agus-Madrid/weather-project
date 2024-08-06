@@ -1,6 +1,7 @@
 import React from "react";
+import { LinkedinIcon } from "./LinkedinIcon";
 
-export const Button = ({ text, onClick, typeOfButton }) => {
+export const Button = ({ text, onClick, typeOfButton, link }) => {
 
     const renderButton = () => {
         switch(typeOfButton) {
@@ -20,7 +21,8 @@ export const Button = ({ text, onClick, typeOfButton }) => {
                 break;
             case 'us':
                 return (
-                    <button onClick={onClick} className="bt-us w-1/4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                    <button onClick={onClick} href={link} className="bt-us w-1/4 flex gap-4 justify-center items-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                        <LinkedinIcon />
                         {text}
                     </button>
                 );

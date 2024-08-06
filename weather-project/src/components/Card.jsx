@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 
-export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
+export const Card = ({
+  title,
+  weather,
+  temperature,
+  typeOfCard,
+  children,
+  link,
+}) => {
   const [mousex, setMouseX] = useState(0);
   const [mousey, setMouseY] = useState(0);
 
   useEffect(() => {
     const handleMouseMovement = (e) => {
-      const windowWidth = window.innerWidth / 2;
-      const windowHeight = window.innerHeight / 2;
+      const windowWidth = window.innerWidth / 1.1;
+      const windowHeight = window.innerHeight / 1.1;
 
       setMouseX(e.clientX / windowWidth);
       setMouseY(e.clientY / windowHeight);
@@ -69,23 +76,24 @@ export const Card = ({ title, weather, temperature, typeOfCard, children }) => {
               className="inside-card absolute top-0 left-0 w-full h-full bg-center opacity-45 bg-cover rounded-xl"
               style={{
                 backgroundImage: `url("https://i.pinimg.com/564x/07/6e/c1/076ec18cc65e86984bf136203991ffc0.jpg")`,
-                transform: `translate(-${mousex}%, -${mousey}%)`,
+                transform: `translate(${mousex}%, ${mousey}%)`,
               }}
             />
           </div>
         );
       case "aside_card":
         return (
-          <div className="card card-aside-temp relative w-full bg-[#14171d] rounded-lg h-[20rem] -z-20 text-white flex">
-            <div className="card-content flex flex-col justify-centerrounded-b-lg items-center w-full h-full -z-10">
-              {/* <h2>s</h2> */}
-              {children}
+          <a href={link} target="_blank" className="w-full">
+            <div className="card card-aside-temp relative w-full bg-[#14171d] rounded-lg h-[20rem] -z-20 text-white flex">
+              <div className="card-content flex flex-col justify-centerrounded-b-lg items-center w-full h-full -z-10">
+                {children}
+              </div>
+              <div className="absolute bottom-0 w-full h-[8rem] bg-[#000000c5] rounded-b-xl z-10 flex justify-center items-center">
+                <p className="z-30 text-center pl-4 pr-4 font-bold">{title}</p>
+              </div>
+              <div className="inside-card absolute top-0 left-0 w-full h-full bg-black opacity-45 rounded-xl -z-10"></div>
             </div>
-            <div className="absolute bottom-0 w-full h-[8rem] bg-[#000000c5] rounded-b-xl z-10 flex justify-center items-center">
-              <p className="z-30 text-center pl-4 pr-4 font-bold">{title}</p>
-            </div>
-            <div className="inside-card absolute top-0 left-0 w-full h-full bg-black opacity-45 rounded-xl -z-10"></div>
-          </div>
+          </a>
         );
       case "loading":
         return (

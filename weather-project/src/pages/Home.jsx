@@ -23,7 +23,7 @@ export const Home = () => {
 
   return (
     <>
-      <Banner title={'Weather - Web'}/>
+      <Banner title={"Weather - Web"} />
       <main className="w-3/4 flex mt-4 h-auto m-auto relative">
         {!weather ? (
           <>
@@ -203,15 +203,12 @@ export const Home = () => {
                 .slice(0, 3)
                 .map((article, index) => (
                   <Card
+                    link={article.url}
                     key={index}
                     title={
-                      <a
-                        href={article.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <p>
                         {ifLargerCut(article.title, 47)}
-                      </a>
+                      </p>
                     }
                     weather={weather}
                     temperature={"temp"}

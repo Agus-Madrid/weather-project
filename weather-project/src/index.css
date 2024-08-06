@@ -54,6 +54,9 @@ h2, h1{
     width: 50%;
     font-size: 17px;
   }
+  .bt-us{
+    width: 35%;
+  }
 }
 
 /* Tablets and smaller devices*/

@@ -5,8 +5,17 @@ import { ReactIcon } from "./ReactIcon";
 import { TailwindIcon } from "./TailwindIcon";
 
 export const Banner = ({ title }) => {
+
   const background =
     "https://wallpaperbat.com/img/8617980-cloudy-photo-download-the-best-free.jpg";
+
+  const redirectToLinkedinRodri = () => {
+    window.open("https://www.linkedin.com/in/rodrigo-aguillon-245798200/");
+  }
+  const redirectToLinkedinAgus = () => {
+    window.open("https://www.linkedin.com/in/agustin-madrid-sanchez/");
+  }
+  
   return (
     <div className="relative flex justify-center">
       <div
@@ -38,9 +47,9 @@ export const Banner = ({ title }) => {
         <div className="w-full flex justify-center gap-4 z-10 pt-4 text-white items-center">
           <div className="w-2/3 flex justify-center gap-4 z-10 text-white items-center">
             <p className="text-center">Made by</p>
-            <Button text={"Rodrigo"} typeOfButton={"us"} />
+            <Button text={"Rodrigo"} typeOfButton={"us"} onClick={redirectToLinkedinRodri}/>
             <p>&</p>
-            <Button text={"Agustin"} typeOfButton={"us"} />
+            <Button text={"Agustin"} typeOfButton={"us"} onClick={redirectToLinkedinAgus}/>
           </div>
 
           <div className="w-1/8 flex gap-4 justify-center items-center p-2">
