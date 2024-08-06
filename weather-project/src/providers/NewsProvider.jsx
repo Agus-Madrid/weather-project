@@ -31,7 +31,7 @@ export const NewsProvider = ({ children }) => {
                 }
             }
 
-            const response = await fetch(`https://newsapi.org/v2/everything?q=${query} ${relevantKeywords}&from=${formattedDate}&sortBy=publishedAt&apiKey=d8e96e18a2bb45b881d33a8f793151df`);
+            const response = await fetch(`https://newsapi.org/v2/everything?q=${query} ${relevantKeywords}&from=${formattedDate}&sortBy=publishedAt&apiKey=525e07b580d3413c893538c90062da9b`);
             const data = await response.json();
             setNews(data.articles);
         } catch (error) {
