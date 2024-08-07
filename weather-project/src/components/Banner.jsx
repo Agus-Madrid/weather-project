@@ -3,8 +3,10 @@ import { Button } from "./Button";
 import { JavascriptIcon } from "./JavascriptIcon";
 import { ReactIcon } from "./ReactIcon";
 import { TailwindIcon } from "./TailwindIcon";
+import { useColor } from "../providers/ColorProvider";
 
 export const Banner = ({ title }) => {
+  const {primaryColor, secondaryColor} = useColor();
 
   const background =
     "https://wallpaperbat.com/img/8617980-cloudy-photo-download-the-best-free.jpg";
@@ -47,9 +49,9 @@ export const Banner = ({ title }) => {
         <div className="banner-content-container w-full flex justify-center gap-4 z-10 pt-4 text-white items-center">
           <div className="button-us-container w-2/3 flex justify-center gap-4 z-10 text-white items-center">
             <p className="text-center made-by">Made by</p>
-            <Button text={"Rodrigo"} typeOfButton={"us"} onClick={redirectToLinkedinRodri}/>
+            <Button text={"Rodrigo"} typeOfButton={"us"} onClick={redirectToLinkedinRodri} colors={{primary: primaryColor, secondary: secondaryColor}}/>
             <p>&</p>
-            <Button text={"Agustin"} typeOfButton={"us"} onClick={redirectToLinkedinAgus}/>
+            <Button text={"Agustin"} typeOfButton={"us"} onClick={redirectToLinkedinAgus} colors={{primary: primaryColor, secondary: secondaryColor}}/>
           </div>
 
           <div className="w-1/8 flex gap-4 justify-center items-center p-2">

@@ -7,9 +7,26 @@ export const Card = ({
   typeOfCard,
   children,
   link,
+  colors
 }) => {
   const [mousex, setMouseX] = useState(0);
   const [mousey, setMouseY] = useState(0);
+
+  var mainCardUrl = "https://cdn.wallpapersafari.com/78/98/c9DqJs.jpg";
+
+  if(!colors) colors = {primary: "#3b82f6", secondary: "#1d4ed8"};
+
+  switch(colors.primary){
+    case "#f7cf4d":
+      mainCardUrl = "https://wallpapers.com/images/hd/summer-landscape-y7iihichc7om196y.jpg";
+      break;
+    case "#f84949":
+      mainCardUrl = "https://img.freepik.com/premium-photo/abstract-background-with-tropical-beach-ocean-view-clear-water-shore-with-stones-island-palm-trees-summer-landscape-wallpaper-horizontal-illustration-banner-design-generative-ai_9209-12058.jpg";
+      break;
+    case "#3b82f6":
+      mainCardUrl = "https://cdn.wallpapersafari.com/78/98/c9DqJs.jpg";
+      break;
+  }
 
   useEffect(() => {
     const handleMouseMovement = (e) => {
@@ -45,24 +62,24 @@ export const Card = ({
               </div>
               <div className="card-content flex flex-col justify-center pl-4 rounded-b-lg -z-20">
                 <div className="flex flex-col gap-4 z-10">
-                  <h1 className="text-9xl text-[#def365]">
+                  <h1 className="text-9xl" style={{ color: colors.primary }}>
                     {Math.round(temperature)}°{" "}
                   </h1>
                   <div className="feels_like flex gap-4">
                     <h2 className="text-4xl">FEELS LIKE </h2>
-                    <h2 className="text-4xl text-[#def365]">
+                    <h2 className="text-4xl" style={{ color: colors.primary }}>
                       {Math.round(weather.main.feels_like)}°
                     </h2>
                   </div>
                   <div className="feels_like flex gap-4">
                     <h2 className="text-4xl">MIN </h2>
-                    <h2 className="text-4xl text-[#def365]">
+                    <h2 className="text-4xl" style={{ color: colors.primary }}>
                       {Math.round(weather.main.temp_min)}°
                     </h2>
                   </div>
                   <div className="feels_like flex gap-4">
                     <h2 className="text-4xl">MAX </h2>
-                    <h2 className="text-4xl text-[#def365]">
+                    <h2 className="text-4xl" style={{ color: colors.primary }}>
                       {Math.round(weather.main.temp_max)}°
                     </h2>
                   </div>
@@ -73,9 +90,9 @@ export const Card = ({
             </div>
             <div className="inside-card absolute top-0 left-0 w-full h-full bg-black opacity-45 rounded-xl" />
             <div
-              className="inside-card absolute top-0 left-0 w-full h-full bg-center opacity-45 bg-cover rounded-xl"
+              className="inside-card absolute -top-10 -left-10 w-[110%] h-[110%] bg-center opacity-45 bg-cover rounded-xl"
               style={{
-                backgroundImage: `url("https://i.pinimg.com/564x/07/6e/c1/076ec18cc65e86984bf136203991ffc0.jpg")`,
+                backgroundImage: `url("${mainCardUrl}")`,
                 transform: `translate(${mousex}%, ${mousey}%)`,
               }}
             />
