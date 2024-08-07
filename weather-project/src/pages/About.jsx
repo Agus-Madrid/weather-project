@@ -28,7 +28,7 @@ export const About = () => {
             data.
           </p>
           <br />
-          <h3 className="bg-cyan-600 w-[10%] text-center">News API</h3>
+          <h3 className="h3-about bg-cyan-600 w-48 text-center">News API</h3>
           <p>
             News API is used to dynamically obtain news based on current weather
             conditions. We integrate temperature, wind, and rain to filter
@@ -40,7 +40,7 @@ export const About = () => {
             .
           </p>
           <br />
-          <h3 className="bg-cyan-600 w-[12%] text-center">Weather API</h3>
+          <h3 className="h3-about bg-cyan-600 w-48 text-center">Weather API</h3>
           <p>
             The Weather API is used to obtain current weather data, including
             temperature, wind, and rain conditions. This data is used to
@@ -63,22 +63,22 @@ export const About = () => {
 
           <ul>
             <li>
-              <h3 className="bg-cyan-600 w-[12%] text-center">Banner</h3>A
+              <h3 className="h3-about bg-cyan-600 w-48 text-center">Banner</h3>A
               reusable component that displays a banner at the top of the page.
             </li>
             <br />
             <li>
-              <h3 className="bg-cyan-600 w-[12%] text-center">Button</h3>This
+              <h3 className="h3-about bg-cyan-600 w-48 text-center">Button</h3>This
               component is in charge of managing the variety of distinct buttons
               we have such as info buttons for example.
             </li>
             <br />
             <li>
-              <h3 className="bg-cyan-600 w-[12%] text-center">Header</h3>The header you can see on every page you step at.
+              <h3 className="h3-about bg-cyan-600 w-48 text-center">Header</h3>The header you can see on every page you step at.
             </li>
             <br />
             <li>
-              <h3 className="bg-cyan-600 w-[12%] text-center">Card</h3>A generic
+              <h3 className="h3-about bg-cyan-600 w-48 text-center">Card</h3>A generic
               component used to display individual news and weather items.
             </li>
           </ul>
