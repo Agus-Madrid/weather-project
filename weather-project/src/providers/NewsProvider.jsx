@@ -15,11 +15,16 @@ export const NewsProvider = ({ children }) => {
         `https://api.thenewsapi.com/v1/news/all?api_token=GqS4A51JZTQcnh7c9jGp6RJp84wIFXomNhGB7zpp&search=weather`
       );
 
-      console.log(response);
       const data = await response.json();
-      setNews(data.data);
+      console.log("News response:", response);
+      if(response.ok){
+        setNews(data.data);
+      }else{
+        setNews([]);
+      }
     } catch (error) {
       console.error("Error fetching news:", error);
+      setNews([]);
     }
   };
 

@@ -201,8 +201,8 @@ export const Home = () => {
               />
             </section>
             <aside className="w-1/3 flex justify-start gap-4 p-4 pr-0 flex-col items-center">
-              {news
-                .filter((article) => article.image_url)
+              {news.length>0 && (
+                news.filter((article) => article.image_url)
                 .slice(0, 3)
                 .map((article, index) => (
                   <Card
@@ -224,7 +224,7 @@ export const Home = () => {
                       </div>
                     }
                   />
-                ))}
+                )))}
             </aside>
           </>
         )}
