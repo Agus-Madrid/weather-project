@@ -1,18 +1,17 @@
-// Home.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { Card } from "../components/Card";
 import { Button } from "../components/Button";
 import { useWeather } from "../providers/WeatherProvider";
-import { usePosition } from "../providers/LocationProvider";
 import { Banner } from "../components/Banner";
 import { useNews } from "../providers/NewsProvider";
+import { useColor } from "../providers/ColorProvider";
 import sunriseIcon from "../assets/icons/sunrise.svg";
 import sunsetIcon from "../assets/icons/sunset.svg";
 
 export const Home = () => {
-  const { position } = usePosition();
   const { weather, country, windStatus } = useWeather();
   const { news } = useNews();
+  const { primaryColor, secondaryColor } = useColor();
 
   const ifLargerCut = (text, length) => {
     if (text.length > length) {
@@ -25,7 +24,7 @@ export const Home = () => {
     <>
       <Banner title={"Weather - Web"} />
       <main className="w-3/4 flex mt-4 h-auto m-auto relative">
-        {!weather ? (
+        {!weather || !primaryColor || !news || !secondaryColor ? (
           <>
             <div className="absolute top-[10%] left-2/4 p-2 rounded">
               <div role="status">
@@ -70,6 +69,7 @@ export const Home = () => {
                 description={"Lugar " + weather.name}
                 temperature={weather.main.temp}
                 typeOfCard={"main_card"}
+                colors={{ primary: primaryColor, secondary: secondaryColor }}
               />
 
               <Card
@@ -101,6 +101,10 @@ export const Home = () => {
                       text="Get wind status"
                       onClick={() => alert(windStatus.description)}
                       typeOfButton={"info"}
+                      colors={{
+                        primary: primaryColor,
+                        secondary: secondaryColor,
+                      }}
                     />
                   </div>
                 }
@@ -114,7 +118,7 @@ export const Home = () => {
                   <div className="flex flex-col gap-4 p-4 justify-center">
                     <div className="flex gap-4 items-center">
                       <h2 className="text-2xl">HUMIDITY </h2>
-                      <h2 className="text-2xl text-[#86c4c7]">
+                      <h2 className="text-2xl" style={{ color: primaryColor }}>
                         {weather.main.humidity}%
                       </h2>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
@@ -126,10 +130,9 @@ export const Home = () => {
                     </div>
                     <div className="flex gap-4 items-center">
                       <h2 className="text-2xl ">PRESSURE </h2>
-                      <h2 className="text-2xl text-[#86c4c7]">
+                      <h2 className="text-2xl" style={{ color: primaryColor }}>
                         {weather.main.pressure} hPa
                       </h2>
-                      {/* <i className="fas fa-tachometer-alt text-[#86c4c7]"> </i> */}
                     </div>
                   </div>
                 }
@@ -148,7 +151,7 @@ export const Home = () => {
                         className="w-8 h-8"
                       />
                       <h2 className="text-2xl">SUNRISE </h2>
-                      <h2 className="text-2xl text-[#86c4c7]">
+                      <h2 className="text-2xl" style={{ color: primaryColor }}>
                         {new Date(
                           weather.sys.sunrise * 1000
                         ).toLocaleTimeString()}
@@ -161,7 +164,7 @@ export const Home = () => {
                         className="w-8 h-8"
                       />
                       <h2 className="text-2xl ">SUNSET </h2>
-                      <h2 className="text-2xl text-[#86c4c7]">
+                      <h2 className="text-2xl" style={{ color: primaryColor }}>
                         {new Date(
                           weather.sys.sunset * 1000
                         ).toLocaleTimeString()}
@@ -179,13 +182,13 @@ export const Home = () => {
                   <div className="flex flex-col gap-4 p-4 justify-center">
                     <div className="flex gap-4">
                       <h2 className="text-2xl">CLOUDINESS </h2>
-                      <h2 className="text-2xl text-[#86c4c7]">
+                      <h2 className="text-2xl" style={{color:primaryColor}}>
                         {weather.clouds.all} %
                       </h2>
                     </div>
                     <div className="flex gap-4 items-center">
                       <h2 className="text-2xl ">DESCRIPTION </h2>
-                      <h2 className="text-2xl text-[#86c4c7]">
+                      <h2 className="text-2xl" style={{color:primaryColor}}>
                         {weather.weather[0].description}
                       </h2>
                       <img
@@ -199,25 +202,21 @@ export const Home = () => {
             </section>
             <aside className="w-1/3 flex justify-start gap-4 p-4 pr-0 flex-col items-center">
               {news
-                .filter((article) => article.urlToImage)
+                .filter((article) => article.image_url)
                 .slice(0, 3)
                 .map((article, index) => (
                   <Card
                     link={article.url}
                     key={index}
-                    title={
-                      <p>
-                        {ifLargerCut(article.title, 47)}
-                      </p>
-                    }
+                    title={<p>{ifLargerCut(article.title, 47)}</p>}
                     weather={weather}
                     temperature={"temp"}
                     typeOfCard={"aside_card"}
                     children={
                       <div className="card-content flex flex-col justify-center w-full h-full items-center">
-                        {article.urlToImage && (
+                        {article.image_url && (
                           <img
-                            src={article.urlToImage}
+                            src={article.image_url}
                             alt={article.title}
                             className="w-full h-full object-cover rounded-lg"
                           />

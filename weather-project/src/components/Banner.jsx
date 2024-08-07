@@ -3,8 +3,10 @@ import { Button } from "./Button";
 import { JavascriptIcon } from "./JavascriptIcon";
 import { ReactIcon } from "./ReactIcon";
 import { TailwindIcon } from "./TailwindIcon";
+import { useColor } from "../providers/ColorProvider";
 
 export const Banner = ({ title }) => {
+  const {primaryColor, secondaryColor} = useColor();
 
   const background =
     "https://wallpaperbat.com/img/8617980-cloudy-photo-download-the-best-free.jpg";
@@ -19,13 +21,13 @@ export const Banner = ({ title }) => {
   return (
     <div className="relative flex justify-center">
       <div
-        className="banner w-3/4 bg-[#222831] h-[80vh] flex gap-20 flex-col justify-center items-center rounded-b-xl"
+        className="banner w-3/4 bg-[#222831] h-[40rem] flex gap-20 flex-col justify-center items-center rounded-b-xl"
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
         }}
       >
-        <div className="flex justify-center flex-col gap-0 text-center relative p-4">
+        <div className="flex justify-center flex-col gap-0 text-center relative p-4 main-h1">
           <h1 className="text-white text-6xl z-10 p-0 pt-[15vh] font-bold">
             {title}
           </h1>
@@ -44,12 +46,12 @@ export const Banner = ({ title }) => {
           <div className="inside-card-text absolute top-[85.5%] left-0 w-full h-2 bg-black opacity-45 rounded-xl p-4" />
         </div>
 
-        <div className="w-full flex justify-center gap-4 z-10 pt-4 text-white items-center">
-          <div className="w-2/3 flex justify-center gap-4 z-10 text-white items-center">
-            <p className="text-center">Made by</p>
-            <Button text={"Rodrigo"} typeOfButton={"us"} onClick={redirectToLinkedinRodri}/>
+        <div className="banner-content-container w-full flex justify-center gap-4 z-10 pt-4 text-white items-center">
+          <div className="button-us-container w-2/3 flex justify-center gap-4 z-10 text-white items-center">
+            <p className="text-center made-by">Made by</p>
+            <Button text={"Rodrigo"} typeOfButton={"us"} onClick={redirectToLinkedinRodri} colors={{primary: primaryColor, secondary: secondaryColor}}/>
             <p>&</p>
-            <Button text={"Agustin"} typeOfButton={"us"} onClick={redirectToLinkedinAgus}/>
+            <Button text={"Agustin"} typeOfButton={"us"} onClick={redirectToLinkedinAgus} colors={{primary: primaryColor, secondary: secondaryColor}}/>
           </div>
 
           <div className="w-1/8 flex gap-4 justify-center items-center p-2">
